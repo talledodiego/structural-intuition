@@ -6,7 +6,7 @@ Structural Intuition is a collection of small, interactive web applets for stude
 
 The goal is not to compute numbers, but to understand **why** structures behave the way they do.
 
-🔗 **Gallery:** see the website link in the *About* panel of this repository (published with GitHub Pages).
+🔗 **Gallery:** <https://talledodiego.github.io/structural-intuition/> (published with GitHub Pages).
 
 ---
 
@@ -74,4 +74,4 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before
 
 Le applet funzionano direttamente nel browser, senza installare nulla. Sono disponibili in italiano (predefinito) e in inglese aggiungendo `?lang=en` all'indirizzo.
 
-👉 **Galleria:** il link è nel pannello *About* di questa repository.
+👉 **Galleria:** <https://talledodiego.github.io/structural-intuition/>
