@@ -8,6 +8,7 @@ tier: A
 dependencies: [numpy, matplotlib]
 validation: "Timoshenko & Gere, Theory of Elastic Stability, ch. 2; EN 1993-1-1 §6.3.1 for slenderness definition; ArcelorMittal sales programme for HEA/IPE section properties"
 status: published
+thumbnail: public/thumbnail.svg
 ---
 
 # Euler buckling

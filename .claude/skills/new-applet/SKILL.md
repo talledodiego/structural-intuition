@@ -53,7 +53,11 @@ Write `app.py` (marimo):
 
 Translate to `en` using `docs/glossary.md`. Add missing terms to the glossary. Run `test_strings.py`.
 
-## 7. Checks
+## 7. Gallery thumbnail
+
+Every applet needs `public/thumbnail.svg`, declared as `thumbnail: public/thumbnail.svg` in the card; `scripts/test_build_site.py` fails without it. Draw a small picture of the structure with matplotlib, about 4:1 (`shared.plotting.figure(figsize=(4.0, 0.8))`), white background, palette of `docs/style.md`, **no text**. Reuse the helpers of `figures.py` (supports, hinges) so that it matches the applet. See `docs/applet-template.md`.
+
+## 8. Checks
 
 ```bash
 uv run pytest apps/<slug>
@@ -62,8 +66,8 @@ uv run marimo check apps/<slug>/app.py
 uv run python scripts/build_site.py --include-drafts --only <slug>
 ```
 
-Open the exported page with `?lang=it` and `?lang=en`.
+Open the exported page with `?lang=it` and `?lang=en`, and the gallery (`site/index.html`): the new card has its thumbnail and looks consistent with the others.
 
-## 8. Hand over
+## 9. Hand over
 
 Set `status: review`. Summarise for the user: key message, assumptions, validation results, anything uncertain. Publication (`status: published`) is done only by a human reviewer.
