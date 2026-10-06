@@ -27,6 +27,7 @@ Every applet is a free playground with the same structure:
 
 | Applet | Topic | Status |
 |---|---|---|
+| [Axially loaded bar](apps/axial_bar/) | Hooke's law: stiffness of the bar vs the material | ✅ available |
 | [Euler buckling](apps/euler_buckling/) | Elastic instability of compressed members | 🚧 in development |
 | Lateral-torsional buckling | Instability of beams in bending | planned |
 | RC bending | Reinforced concrete sections, M–N interaction | planned |
@@ -42,9 +43,9 @@ Requires [uv](https://docs.astral.sh/uv/).
 git clone <repository-url>
 cd structural-intuition
 uv sync
-uv run marimo run apps/euler_buckling/app.py      # use the applet
-uv run marimo edit apps/euler_buckling/app.py     # edit it
-uv run pytest                                     # run the tests
+uv run marimo run apps/axial_bar/app.py --no-sandbox   # use the applet
+uv run marimo edit apps/axial_bar/app.py --no-sandbox  # edit it
+uv run pytest                                          # run the tests
 ```
 
 ## Project documentation

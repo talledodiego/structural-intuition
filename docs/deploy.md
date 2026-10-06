@@ -26,12 +26,16 @@ Applets in `draft` or `review` can be built locally (`--include-drafts`) but are
 
 ### Forks
 
-`build_site.py` must not hard-code the owner or the site URL. It derives the base URL from the `GITHUB_REPOSITORY` environment variable (`owner/repo`) in CI, so that a fork publishes to `https://<owner>.github.io/<repo>/` without changes. All links between pages are relative.
+`build_site.py` does not hard-code the owner or the site URL. All links between pages are relative, so a fork publishes to `https://<owner>.github.io/<repo>/` without changes; the only absolute link, to the source code in the gallery, comes from the `GITHUB_REPOSITORY` environment variable (`owner/repo`) set by GitHub Actions.
 
-### Points to verify with the pilot applet
+### How the export works (verified with `apps/_template` and `apps/axial_bar`, marimo 0.25)
 
-- `shared/` is outside the applet folder: the export must resolve it (configure the Python path in `pyproject.toml`).
-- Reading `?lang=` from the URL works in the WASM export.
+- **Local modules.** `[tool.marimo.runtime] pythonpath = ["."]` in `pyproject.toml` makes `shared/` importable in `marimo edit/run`. `marimo export html-wasm` also uses it: it finds the local modules the notebook imports (`shared`, `core`, `figures`, `strings`), packs them as wheels into `<slug>/public/wheels/` and installs them in the browser.
+- **Third-party packages.** In the browser, marimo installs only the packages imported *by the notebook itself*, not those imported by `shared/` or `core.py`. Every `app.py` therefore declares its runtime packages in a PEP 723 `# /// script` block (same list as `dependencies:` in the card). `build_site.py` exports with `--no-sandbox`, using the project environment; for the same reason, run `marimo run/edit` locally with `--no-sandbox` (otherwise marimo asks whether to create a separate environment).
+- **Language.** `?lang=` is read by `mo.query_params()` in the browser as well; the footer link switches language by reloading with the other parameter.
+- **Display settings** (`[tool.marimo.display]` in `pyproject.toml`) are embedded in the export: `theme = "light"` (light backgrounds even on dark-mode systems) and `locale = "it-CH"`, so widget numbers use a dot as decimal separator in both languages (`0.3`, `1000`, `12'345`).
+- **Credits and source link.** The applet footer shows the copyright and licences from `shared/strings.py` (forks must keep the original copyright notice anyway). The source-code link is only in the gallery, built from `GITHUB_REPOSITORY`, so a fork links to its own repository.
+- marimo copies an AI-assistant prompt (`CLAUDE.md`) among its static assets; `build_site.py` deletes it from each export.
 
 ## Tier B (needs a Python server)
 

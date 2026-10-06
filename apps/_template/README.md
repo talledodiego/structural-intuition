@@ -5,14 +5,16 @@ subtitle: {it: "Sottotitolo di una riga", en: "One-line subtitle"}
 courses: []
 level: base
 tier: A
-dependencies: [numpy, matplotlib]
+dependencies: []                   # also list them in app.py (PEP 723 block)
 validation: "Reference used to validate core.py (book, chapter / standard, clause)"
 status: draft
+# thumbnail: public/thumbnail.svg     # optional gallery image, no text in it
 ---
 
 # <English title>
 
-<!-- Applet card. Written in English. Keep it short. -->
+<!-- Applet card. Written in English. Keep it short.
+     A complete example of card and code: apps/axial_bar. -->
 
 ## Key message
 
