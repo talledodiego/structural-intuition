@@ -32,7 +32,7 @@ The theory behind what the student sees, in a collapsible panel (closed by defau
 
 - Language is read from the URL (`?lang=it` default, `?lang=en`). No visible language switch is required, but a small link to the other language is shown in the footer.
 - Header: applet title and one-line subtitle.
-- Footer: link to the gallery, link to the source code, licence and credits (read from `LICENSE`, never hard-coded).
+- Footer: link to the gallery, link to the other language, copyright and licences (one text in `shared/strings.py`, the same for all applets). The link to the source code is in the gallery.
 - All texts come from `strings.py` (see `docs/i18n.md`).
 - Plots follow `docs/style.md`.
 
@@ -49,7 +49,10 @@ tier: A                            # A = runs in browser, B = needs a Python ser
 dependencies: [numpy, matplotlib]
 validation: "Timoshenko & Gere, Theory of Elastic Stability, ch. 2"
 status: draft                      # draft | review | published
+thumbnail: public/thumbnail.svg    # optional: small image on the gallery card
 ---
 ```
+
+The optional `thumbnail` is an image in the applet's `public/` folder (SVG preferred, about 4:1, white background). It is shown in both languages, so it contains **no text**: typically a small drawing of the structure, in the palette of `docs/style.md`.
 
 Below the front matter: a short description, the key message, controls and outputs, the list of assumptions, validation, and optional **notes for the teacher** (e.g. suggested in-class questions). These notes are for the teacher only and never appear in the applet.

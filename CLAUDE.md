@@ -13,6 +13,7 @@ A human reviewer with structural engineering expertise checks every applet's con
 ```
 apps/<slug>/app.py          marimo notebook — UI only
 apps/<slug>/core.py         computation — pure functions, no UI, no text
+apps/<slug>/figures.py      drawings and charts (matplotlib), optional
 apps/<slug>/strings.py      all user-facing text, {"it": {...}, "en": {...}}
 apps/<slug>/README.md       applet card with YAML front matter (feeds the gallery)
 apps/<slug>/test_*.py       tests for this applet
@@ -38,14 +39,14 @@ docs/                       project documentation and decision records
 ## Commands
 
 ```bash
-uv sync                                         # install dev environment
-uv run marimo edit apps/<slug>/app.py           # edit an applet
-uv run marimo run apps/<slug>/app.py            # run as app
-uv run pytest                                   # all tests
-uv run pytest apps/<slug>                       # one applet
-uv run ruff check . && uv run ruff format .     # lint and format
-uv run marimo check apps/<slug>/app.py          # marimo lint
-uv run python scripts/build_site.py             # build the static site into site/
+uv sync                                             # install dev environment
+uv run marimo edit apps/<slug>/app.py --no-sandbox  # edit an applet
+uv run marimo run apps/<slug>/app.py --no-sandbox   # run as app
+uv run pytest                                       # all tests
+uv run pytest apps/<slug>                           # one applet
+uv run ruff check . && uv run ruff format .         # lint and format
+uv run marimo check apps/<slug>/app.py              # marimo lint
+uv run python scripts/build_site.py                 # build the static site into site/
 ```
 
 Test the language switch with `?lang=en` and `?lang=it` in the browser URL.

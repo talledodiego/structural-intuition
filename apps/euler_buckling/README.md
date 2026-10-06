@@ -2,7 +2,7 @@
 slug: euler_buckling
 title: {it: "Instabilità euleriana", en: "Euler buckling"}
 subtitle: {it: "Perché la snellezza conta più della resistenza", en: "Why slenderness matters more than strength"}
-courses: [lab2, disaster]
+courses: [lab2]
 level: base
 tier: A
 dependencies: [numpy, matplotlib]

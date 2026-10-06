@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: true
+
+      - name: Install
+        run: uv sync --locked
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Format
+        run: uv run ruff format --check .
+
+      - name: Tests
+        run: uv run pytest
+
+      - name: marimo check
+        run: uv run marimo check --strict apps/*/app.py
+
+      - name: WASM compatibility lint
+        run: uv run marimo check --strict --select MW apps/*/app.py
+
+      # Exports every applet, drafts included, so that a notebook that does
+      # not export is caught before it is published. Nothing is deployed here.
+      - name: WASM export (all applets)
+        run: |
+          uv run python scripts/build_site.py --include-drafts
+          uv run python scripts/build_site.py --include-drafts --only _template

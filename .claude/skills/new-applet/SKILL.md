@@ -17,6 +17,10 @@ Ask the user to confirm the card. **Do not proceed until the card is confirmed.*
 
 Copy `apps/_template/` to `apps/<slug>/` (slug in English `snake_case`). Fill the front matter. `status: draft`.
 
+The template is a minimal skeleton (one slider, one result, placeholder texts in both languages). For a complete example — structure drawing, charts, trace of previous states with `mo.state`, stable axis limits — see `apps/axial_bar`.
+- Keep `__init__.py` (lets pytest tell applets apart); tests import with `from .core import ...`.
+- Put drawings and charts (matplotlib, via `shared.plotting`) in a `figures.py`, as in `apps/axial_bar`; `app.py` only wires controls to `core` and `figures`.
+
 ## 2. Core
 
 Write `core.py`:
@@ -40,8 +44,10 @@ Write the `it` section of `strings.py`: introduction, labels, axis labels, resul
 Write `app.py` (marimo):
 - language from `shared.i18n.get_lang()`;
 - the three sections in order (Introduction, Explore, Why?) using `shared.ui`;
-- plots via `shared.plotting`, units via `shared.units`;
-- at most 5–6 controls visible by default; realistic default values.
+- plots via `shared.plotting`, units via `shared.units`, numbers via `shared.units.fmt`;
+- at most 5–6 controls visible by default; realistic default values;
+- list every runtime package (including those used only by `core.py` or `shared/`) in the PEP 723 `# /// script` block at the top, matching `dependencies:` in the card: the browser installs only what is listed there or imported by `app.py` itself;
+- a cell that builds a figure must not end with a matplotlib call that returns an artist (e.g. `ax.set_ylabel(...)`), or marimo displays the figure there too.
 
 ## 6. Strings (English)
 

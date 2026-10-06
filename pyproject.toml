@@ -1,0 +1,67 @@
+[project]
+name = "structural-intuition"
+version = "0.1.0"
+description = "Interactive applets to build intuition about structural behaviour"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+# Runtime dependencies of Tier A applets: everything here must be available
+# in Pyodide (see docs/decisions/0004-tier-a-b.md).
+dependencies = [
+    "marimo>=0.25",
+    "matplotlib>=3.9",
+    "numpy>=2.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pyyaml>=6.0",
+    "ruff>=0.8",
+]
+
+[tool.uv]
+# The repository is not an installable package: applets import `shared`
+# through the Python path configured below.
+package = false
+
+# Makes `shared/` importable from every applet, both in `marimo edit/run` and
+# in `marimo export html-wasm`, which bundles the local modules it finds on
+# this path into the exported page.
+[tool.marimo.runtime]
+pythonpath = ["."]
+
+[tool.marimo.display]
+# Light backgrounds only (docs/style.md), whatever the student's OS theme.
+theme = "light"
+# Number formatting in widgets (e.g. slider values), instead of the browser's
+# locale: a dot as decimal separator in every language (docs/i18n.md). it-CH
+# gives 0.3, 1000 and 12'345 (en-US would show 1,000, which reads as 1.0 in
+# Italian).
+locale = "it-CH"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["shared", "apps", "scripts"]
+addopts = ["-ra"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+extend-exclude = ["site"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY"]
+
+[tool.ruff.lint.per-file-ignores]
+# marimo notebooks: cells are functions whose bodies end with bare expressions
+# that marimo displays.
+"apps/*/app.py" = ["B018"]
+# strings.py holds long prose.
+"apps/*/strings.py" = ["E501"]
+"shared/strings.py" = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["shared"]
+# Modules that each applet imports from its own folder.
+known-local-folder = ["core", "figures", "strings"]
