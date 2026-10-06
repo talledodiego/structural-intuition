@@ -25,12 +25,18 @@ Reference terms for all applets. Use these translations consistently. Add new te
 | indeformata | undeformed shape | |
 | instabilità euleriana | Euler buckling | |
 | instabilità flesso-torsionale / svergolamento | lateral-torsional buckling | |
+| iperbole di Eulero | Euler hyperbola | $P_{cr}(\lambda) = \pi^2 E A/\lambda^2$ |
 | lunghezza libera di inflessione | effective (buckling) length | symbol $L_0$ |
 | materiale isotropo / ortotropo / anisotropo | isotropic / orthotropic / anisotropic material | |
+| mensola | cantilever | support case fixed–free |
+| modo critico | buckling mode | |
 | modulo di elasticità (di Young) | Young's modulus / modulus of elasticity | symbol $E$ |
 | modulo di taglio | shear modulus | symbol $G$ |
 | momento d'inerzia | second moment of area | avoid "moment of inertia" in English texts |
+| profilo laminato | rolled section | HEA, IPE, …; "rolled I-section" |
+| raccordo (di un profilo laminato) | root fillet | radius $r$ |
 | raggio d'inerzia (giratore) | radius of gyration | symbol $i$ (EC) or $r$ |
+| resistenza (del materiale) | strength | symbol $f$; never "resistance" |
 | rigidezza assiale | axial stiffness | $k = EA/L$ |
 | schiacciamento | crushing / squashing | for steel: yielding |
 | sforzo normale | axial force | symbol $N$; tension positive |
