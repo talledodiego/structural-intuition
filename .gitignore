@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# marimo
+__marimo__/
+
+# Build output
+site/
+dist/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Personal agent settings (shared project rules live in CLAUDE.md)
+.claude/settings.local.json
+CLAUDE.local.md

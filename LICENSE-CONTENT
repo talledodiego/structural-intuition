@@ -1,0 +1,20 @@
+Educational content licence
+
+Copyright (c) 2026 Diego Talledo
+
+The educational content of this repository — explanatory texts (including the
+user-facing texts in apps/*/strings.py), applet descriptions, documentation and
+figures — is licensed under the Creative Commons Attribution 4.0 International
+licence (CC BY 4.0).
+
+You are free to share and adapt this material for any purpose, even
+commercially, provided that you give appropriate credit, provide a link to the
+licence, and indicate if changes were made.
+
+Suggested attribution:
+  "Structural Intuition" by Diego Talledo, https://github.com/talledodiego/structural-intuition,
+  licensed under CC BY 4.0.
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Source code is licensed separately under the MIT licence (see LICENSE).
