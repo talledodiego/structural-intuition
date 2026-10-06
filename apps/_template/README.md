@@ -8,7 +8,7 @@ tier: A
 dependencies: []                   # also list them in app.py (PEP 723 block)
 validation: "Reference used to validate core.py (book, chapter / standard, clause)"
 status: draft
-# thumbnail: public/thumbnail.svg     # optional gallery image, no text in it
+# thumbnail: public/thumbnail.svg     # required (uncomment): gallery image, no text in it
 ---
 
 # <English title>

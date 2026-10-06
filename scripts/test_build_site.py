@@ -39,6 +39,14 @@ def test_repository_cards_are_valid():
     assert "_template" in find_applets(ROOT / "apps", True, only=["_template"])
 
 
+@pytest.mark.parametrize("slug", list(find_applets(ROOT / "apps", True)))
+def test_every_applet_has_a_thumbnail(slug):
+    """Every applet declares a gallery image, and the file exists."""
+    card = read_card(ROOT / "apps" / slug)
+    assert "thumbnail" in card, f"{slug}/README.md: add `thumbnail:`"
+    assert (ROOT / "apps" / slug / card["thumbnail"]).is_file()
+
+
 def test_gallery_both_languages_relative_links():
     page = gallery({"demo": CARD}, "someone/fork")
     assert 'href="demo/?lang=it"' in page and 'href="demo/?lang=en"' in page

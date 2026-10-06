@@ -49,10 +49,10 @@ tier: A                            # A = runs in browser, B = needs a Python ser
 dependencies: [numpy, matplotlib]
 validation: "Timoshenko & Gere, Theory of Elastic Stability, ch. 2"
 status: draft                      # draft | review | published
-thumbnail: public/thumbnail.svg    # optional: small image on the gallery card
+thumbnail: public/thumbnail.svg    # required: small image on the gallery card
 ---
 ```
 
-The optional `thumbnail` is an image in the applet's `public/` folder (SVG preferred, about 4:1, white background). It is shown in both languages, so it contains **no text**: typically a small drawing of the structure, in the palette of `docs/style.md`.
+Every applet has a `thumbnail`: without it, its card looks empty next to the others in the gallery. A test (`scripts/test_build_site.py`) fails if it is missing. The thumbnail is an image in the applet's `public/` folder (SVG preferred, about 4:1, white background). It is shown in both languages, so it contains **no text**. It is typically a small drawing of the structure, in the palette of `docs/style.md`: draw it with matplotlib (`shared.plotting.figure(figsize=(4.0, 0.8))`), reusing the drawing helpers of the applet's `figures.py`, and save it as SVG. Check it in the gallery next to the other cards.
 
 Below the front matter: a short description, the key message, controls and outputs, the list of assumptions, validation, and optional **notes for the teacher** (e.g. suggested in-class questions). These notes are for the teacher only and never appear in the applet.
