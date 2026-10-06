@@ -33,7 +33,7 @@ jobs:
           # The commit that passed CI (workflow_run), or the dispatched ref.
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.2.0
         with:
           enable-cache: true
 
